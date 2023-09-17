@@ -44,6 +44,13 @@ const fs = require('fs');
       .prompt(questions)
       .then(data => {
         const { shape, letters, textColor, shapeColor } = data;
+  
+        // Check if the number of letters exceeds the limit (3)
+        if (letters.length > 3) {
+          console.error('Number of letters cannot exceed 3.');
+          return;
+        }
+  
         let shapeObj;
   
         switch (shape) {
