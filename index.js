@@ -1,5 +1,5 @@
 const fs = require('fs');
-const generateShapes = require('./lib/generateShapes');
+const generateShapes = require('./lib/shapes');
 const inquirer = require('inquirer');
 
 // Define an array of questions for the user
@@ -11,7 +11,7 @@ const questions = [
     },
     {
       type: 'input',
-      name: 'text-color',
+      name: 'textColor',
       message: 'Pick a color for the text. It can be color name or hexadecimal.',
     },
     {
@@ -22,14 +22,10 @@ const questions = [
     },
     {
       type: 'input',
-      name: 'shape-color',
+      name: 'shapeColor',
       message: 'Pick a color for the shape. It can be color name or hexadecimal.',
     },
   ];
-
-  // function init() {
-  //   inquirer.prompt(questions)
-  // };
 
   // Function to write data to a file
 function writeToFile(fileName, data) {
