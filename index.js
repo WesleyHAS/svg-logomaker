@@ -1,9 +1,9 @@
 const fs = require('fs');
-const generateShapes = require('./lib/shapes');
-const inquirer = require('inquirer');
-
-// Define an array of questions for the user
-const questions = [
+  const inquirer = require('inquirer');
+  const { Circle, Square, Triangle } = require('./lib/shapes');
+  
+  // Define an array of questions for the user
+  const questions = [
     {
       type: 'input',
       name: 'letters',
@@ -12,7 +12,7 @@ const questions = [
     {
       type: 'input',
       name: 'textColor',
-      message: 'Pick a color for the text. It can be color name or hexadecimal.',
+      message: 'Pick a color for the text. It can be a color name or hexadecimal.',
     },
     {
       type: 'list',
@@ -23,31 +23,50 @@ const questions = [
     {
       type: 'input',
       name: 'shapeColor',
-      message: 'Pick a color for the shape. It can be color name or hexadecimal.',
+      message: 'Pick a color for the shape. It can be a color name or hexadecimal.',
     },
   ];
-
+  
   // Function to write data to a file
-function writeToFile(fileName, data) {
-  fs.writeFile(fileName, data, err => {
-    if (err) {
-      console.error(err);
-    } else {
-      console.log('SVG created.');
-    }
-  })
-};
-
-// Function to initialize the application
-function init() {
-  inquirer.prompt(questions)
-    .then((data) => {
-      const dataShapes = generateShapes(data);
-      writeToFile('logo.svg', dataShapes);
-    })
-    .catch((err) => {
-      console.error('Something went wrong:', err.message);
+  function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, err => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log('SVG created.');
+      }
     });
-};
-
+  }
+  
+  // Function to initialize the application
+  function init() {
+    inquirer
+      .prompt(questions)
+      .then(data => {
+        const { shape, letters, textColor, shapeColor } = data;
+        let shapeObj;
+  
+        switch (shape) {
+          case 'Circle':
+            shapeObj = new Circle(letters, textColor, shapeColor);
+            break;
+          case 'Square':
+            shapeObj = new Square(letters, textColor, shapeColor);
+            break;
+          case 'Triangle':
+            shapeObj = new Triangle(letters, textColor, shapeColor);
+            break;
+          default:
+            console.error('Invalid shape.');
+            return;
+        }
+  
+        const dataShapes = shapeObj.generateShape();
+        writeToFile('logo.svg', dataShapes);
+      })
+      .catch(err => {
+        console.error('Something went wrong:', err.message);
+      });
+  }
+  
   init();
