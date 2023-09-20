@@ -1,3 +1,4 @@
+// Import required modules
 const fs = require("fs");
 const inquirer = require("inquirer");
 const { Circle, Square, Triangle } = require("./lib/shapes");
@@ -55,6 +56,7 @@ function init() {
 
       let shapeObj;
 
+      // Create the appropriate shape object based on user input
       switch (shape) {
         case "Circle":
           shapeObj = new Circle(letters, textColor, shapeColor);
@@ -70,12 +72,14 @@ function init() {
           return;
       }
 
+      // Generate SVG data for the selected shape and write it to a file
       const dataShapes = shapeObj.render();
-      writeToFile("logo.svg", dataShapes);
+      writeToFile("./examples/logo.svg", dataShapes);
     })
     .catch((err) => {
       console.error("Something went wrong:", err.message);
     });
 }
 
+// Call the initialization function to start the application
 init();
