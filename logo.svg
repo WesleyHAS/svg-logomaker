@@ -1,6 +1,6 @@
 
       <svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="150,50 250,150 50,150" fill="blue"/>
-        <text x="150" y="120" font-size="30" fill="orange" text-anchor="middle" dominant-baseline="middle">SVG</text>
+        <circle cx="150" cy="100" r="50" fill="red"/>
+        <text x="150" y="100" font-size="30" fill="blue" text-anchor="middle" alignment-baseline="middle">svg</text>
       </svg>
     
