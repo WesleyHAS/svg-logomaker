@@ -23,7 +23,7 @@ Install NodeJS. Install Inquirer and Jest from NPM. Clone the repo and run node 
 
 ## Usage
 
-When prompted answer the questions on the terminal for the SVG logo. Here is a [walkthrough]().
+When prompted answer the questions on the terminal for the SVG logo. Here is a [walkthrough](https://drive.google.com/file/d/1xSOrd4iyv66l3cjtJ5c7oFF0EtRSaocH/view).
 
 ## Credits
 
